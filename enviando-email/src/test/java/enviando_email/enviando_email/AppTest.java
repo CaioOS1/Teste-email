@@ -2,9 +2,14 @@ package enviando_email.enviando_email;
 
 import java.util.Properties;
 
+import javax.mail.Address;
 import javax.mail.Authenticator;
+import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +45,15 @@ public class AppTest {
     			};
 			});
     		
-    		System.out.println(senha);
+    		Address[] toUser = InternetAddress.parse("caiooliveirasilva040@gmailcom");
+    		
+    		Message message = new MimeMessage(session);
+    		message.setFrom(new InternetAddress(email)); // Quem está enviando 
+    		message.setRecipients(Message.RecipientType.TO, toUser);// Quem irá enviar
+    		message.setSubject("Email Teste"); // Assunto do Email
+    		message.setText("Segue email enviado via código"); //Mensagema a ser enviada
+    		
+    		Transport.send(message);
     		
 		} catch (Exception e) {
 			e.printStackTrace();
