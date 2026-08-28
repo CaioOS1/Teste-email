@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
  */
 public class AppTest {
 	
-	private String email = "devcaio@gmailcom";
-	private String senha = "Caio123@";
+	private String email = "caiosilva***@gmail.com";
+	private String senha = "lgzv m***x lesw ****";
 	/*
 	 * Todas as informações sobre o smtp estão disponibilizadas na web verifique o
 	 * email a ser utilizado e informe as propriedades para a conexão
@@ -31,6 +31,7 @@ public class AppTest {
     	try {
     		Properties properties = new Properties();
     		
+    		properties.put("mail.smtp.ssl.trust", "*"); 
     		properties.put("mail.smtp.auth", "true"); //Autorização
     		properties.put("mail.smtp.starttls", "true"); //Autenticação
     		properties.put("mail.smtp.host", "smtp.gmail.com"); // Servidor Gmail
@@ -45,15 +46,17 @@ public class AppTest {
     			};
 			});
     		
-    		Address[] toUser = InternetAddress.parse("caiooliveirasilva040@gmailcom");
+    		Address[] toUser = InternetAddress.parse("caiooliveirasi***mail.com, thayssou****@gmail.com");
     		
     		Message message = new MimeMessage(session);
-    		message.setFrom(new InternetAddress(email)); // Quem está enviando 
+    		message.setFrom(new InternetAddress(email, "Caio Oliveira")); // Quem está enviando 
     		message.setRecipients(Message.RecipientType.TO, toUser);// Quem irá enviar
-    		message.setSubject("Email Teste"); // Assunto do Email
-    		message.setText("Segue email enviado via código"); //Mensagema a ser enviada
+    		message.setSubject("Siga La vida Loca, cheira o c* da veia loca"); // Assunto do Email
+    		message.setText("Don't move and pow!"); //Mensagema a ser enviada
     		
     		Transport.send(message);
+    		
+    		System.err.println("Teste");
     		
 		} catch (Exception e) {
 			e.printStackTrace();
